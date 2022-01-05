@@ -19,6 +19,8 @@ export class MaterialEmployeeComponent implements OnInit {
 
   employees: Employee[] = [];
 
+  empids:string[]=[];
+
   dataSource = new MatTableDataSource<Employee>([]);
 
   showform = false;
@@ -28,7 +30,7 @@ export class MaterialEmployeeComponent implements OnInit {
     name: new FormControl("", [Validators.required, Validators.maxLength(255), Validators.minLength(3)]),
     email: new FormControl("", [Validators.required, Validators.email])
   });
-  static remainingEmployees: any;
+  
 
 
 
@@ -45,13 +47,15 @@ export class MaterialEmployeeComponent implements OnInit {
       for (let i in onNext) {
 
         this.employees.push(new Employee(i, onNext[i].name, onNext[i].email));
+
+        this.empids.push(i);
       }
 
       this.dataSource = new MatTableDataSource(this.employees);
 
     });
 
-    console.log(this.employees);
+    console.log(this.empids);
 
 
   }
@@ -93,11 +97,5 @@ export class MaterialEmployeeComponent implements OnInit {
     
   }
 
-  
-  remainingEmployees(){
-
-    return this.employees;
-
-  }
 
 }

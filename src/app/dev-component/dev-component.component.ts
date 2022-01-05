@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Device } from 'src/Device';
 import { DeviceServiceService } from '../device-service.service';
+import { MaterialEmployeeComponent } from '../material-employee/material-employee.component';
 
 
 
@@ -21,6 +22,8 @@ export class DevComponentComponent implements OnInit {
 
   devices: Device[] = [];
 
+  empids: string[] = [];
+
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>();
 
   showform = false;
@@ -32,6 +35,7 @@ export class DevComponentComponent implements OnInit {
     type: new FormControl("", [Validators.required, Validators.nullValidator])
 
   });
+  
 
   constructor(private http: HttpClient, private deviceService: DeviceServiceService) {
 
@@ -87,14 +91,6 @@ export class DevComponentComponent implements OnInit {
 
   ngAfterViewInit(): void {
 
-
-  }
-
-  what(){
-
-    // this.getDevice();
-
-    // this.link = String(this.activatedroute.snapshot.paramMap.get('link'));
 
   }
 

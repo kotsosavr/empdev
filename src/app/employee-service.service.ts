@@ -8,7 +8,7 @@ import { Employee } from 'src/Employee';
 })
 export class EmployeeServiceService {
 
-  employeesArray: Employee[]=[];
+  employeesArray: Employee[] = [];
 
   //@Output() employeesretrieved: EventEmitter<Employee[]> = new EventEmitter();
 
@@ -24,7 +24,7 @@ export class EmployeeServiceService {
 
     return this.http.post("https://employeesdevices-default-rtdb.firebaseio.com/Employee.json", value);
 
-    
+
 
   }
 

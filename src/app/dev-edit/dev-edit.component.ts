@@ -87,33 +87,8 @@ export class DevEditComponent implements OnInit {
 
   ngAfterViewInit(){
 
-    // this.employeeService.getEmployees().subscribe((onNext: any) => {
-
-    //   for (let i in onNext) {
-
-    //     this.employeesids.push(i);
-    //   }
-
-    //   console.log(this.employeesids);
-
-    // });
-
-    //this.retrieveEmployeeIds();
-
 
   }
 
-  // retrieveEmployeeIds(){
-
-  //   this.employees = MaterialEmployeeComponent.remainingEmployees();
-
-  //   for(let i=0; i < this.employees.length; i++){
-
-  //     this.empids[i] = this.employees[i].id;
-
-  //   }
-
-  //   console.log(this.empids);
-  // }
 
 }
