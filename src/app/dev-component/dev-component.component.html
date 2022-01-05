@@ -1,0 +1,75 @@
+<mat-card>
+  <mat-card-title>Devices</mat-card-title>
+  <mat-card-content>
+
+
+
+
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="serial">
+        <th mat-header-cell *matHeaderCellDef> Serial </th>
+        <td mat-cell *matCellDef="let element"> {{element.serial}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="serialNo">
+        <th mat-header-cell *matHeaderCellDef> Serial Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.serialNo}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="empid">
+        <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.empid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row; let element">
+          <button mat-button class="btn btn-warning" [routerLink]="element.serial">Edit</button> |
+          <!--[routerLink]="element.link"-->
+          <button mat-button class="btn btn-ms-5 btn-danger" (click)="deleteDevice(element.serial)">Delete</button>
+        </mat-cell>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+  </mat-card-content>
+  <button class="btn btn-primary mt-5" (click)="showform=true"> CREATE</button>
+    <form *ngIf="showform" [formGroup]="dform" (ngSubmit)="createDevice()">
+      <div class="form-group">
+        <label for="name">Serial Number:</label>
+        <input type="text" class="form-control" id="serial number" formControlName="serialNo">
+      </div>
+      <div class="form-group">
+        <label for="email">Description:</label>
+        <input type="text" class="form-control" id="description" formControlName="description">
+      </div>
+      <div class="form-group">
+        <label for="email">Type:</label>
+        <input type="text" class="form-control" id="type" formControlName="type">
+      </div>
+    
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</mat-card>

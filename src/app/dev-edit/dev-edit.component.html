@@ -1,0 +1,35 @@
+<mat-card style="size: 100%; height: 700px;">
+  <mat-card-title>Device</mat-card-title>
+  <mat-card-content>
+    <form novalidate [formGroup]="form">
+      <input type="hidden" formControlName="serial">
+      <div fxLayout="row" fxLayoutGap="1rem">
+        <div fxLayout="column" fxFill>
+          <mat-form-field>
+            <input matInput placeholder="SerialNo" formControlName="serialNo" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Description" formControlName="description" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Type" formControlName="type" required>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="goBack()">GO BACK</button>
+    <button mat-button (click)="updateDevice()">SAVE</button>
+  </mat-card-actions>
+  <p></p>
+  <ul>
+    <h2>Types:</h2>
+    <li>1 is laptop</li>
+    <li>2 is phone</li>
+    <li>3 is tablet</li>
+  </ul>
+  
+</mat-card>
