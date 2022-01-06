@@ -48,14 +48,14 @@ export class MaterialEmployeeComponent implements OnInit {
 
         this.employees.push(new Employee(i, onNext[i].name, onNext[i].email));
 
-        this.empids.push(i);
+        //this.empids.push(i);
       }
 
       this.dataSource = new MatTableDataSource(this.employees);
 
     });
 
-    console.log(this.empids);
+    //console.log(this.empids);
 
 
   }
@@ -64,11 +64,21 @@ export class MaterialEmployeeComponent implements OnInit {
 
     this.showform = false;
 
-    this.employee = new Employee(Math.random().toString(36).substr(2, 5), this.eform.value.name, this.eform.value.email);
+    const nom: string = this.eform.value.name;
+    const mail = this.eform.value.email
+
+    this.employee = new Employee("", nom, mail);
 
     this.employeeService.createEmployees(this.employee).subscribe((response:any) => {
 
-      this.employees.push(this.employee);
+      
+      for (let i in response) {
+
+        this.employee.id = response[i];//replace id with auto generated from firebase
+        this.employees.push(new Employee(response[i], nom, mail));
+
+      }
+      
       this.dataSource = new MatTableDataSource(this.employees);
 
     });

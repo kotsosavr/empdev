@@ -61,12 +61,17 @@ export class DevComponentComponent implements OnInit {
 
     this.showform = false;
 
-    this.device = new Device(Math.random().toString(36).substr(2, 5), this.dform.value.serialNo, this.dform.value.description, this.dform.value.type, "0");
+    this.device = new Device("", this.dform.value.serialNo, this.dform.value.description, this.dform.value.type, "0");
 
-    this.deviceService.createDevice(this.device).subscribe(() => {
+    this.deviceService.createDevice(this.device).subscribe((response:any) => {
 
-      console.log(this.device.serial);
-      this.devices.push(this.device);
+      for (let i in response) {
+
+        this.device.serial = response[i];//replace serial with auto generated from firebase
+        //console.log(this.device)
+        this.devices.push(this.device);
+
+      }
       this.dataSource = new MatTableDataSource(this.devices);
 
     });

@@ -18,13 +18,7 @@ export class EmployeeServiceService {
 
   createEmployees(value: Employee) {
 
-    console.log(value);
-
-    this.employeesArray.push(value);
-
     return this.http.post("https://employeesdevices-default-rtdb.firebaseio.com/Employee.json", value);
-
-
 
   }
 
